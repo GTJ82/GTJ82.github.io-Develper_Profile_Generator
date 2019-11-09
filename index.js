@@ -1,6 +1,6 @@
 let axios = require("axios");
 let inquirer = require("inquirer");
-// let fs = require("fs");
+let fs = require("fs");
 
 inquirer.prompt([
     {
@@ -15,15 +15,23 @@ inquirer.prompt([
         name: "colors"
     }
 ]).then(function (info) {
-    axios.get("https://api.github.com/users/", + info.name )
-    .then(function(response){
-        console.log(response.location);
-    });
-});
-        // fs.writeFile("user.txt", "### " + response.name + " is the github username" , function (err) {
-        //     if (err) {
-        //         return (console.log(err));
-        //     }
-        //     console.log("success!");
-        // })
+    axios.get("https://api.github.com/users/" + info.name)
+        .then(function (response) {
+            console.log(response.data);
+            
+                let locate = response.data.location
+            
+                fs.writeFile("user.md", "### " + locate + " is the users location", function (err) {
+                    if (err) {
+                        return (console.log(err));
+                    }
+                    console.log("yay!");
+                    
+        });
+    })
+    
+    
         
+    });
+
+          
