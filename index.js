@@ -9,7 +9,7 @@ inquirer.prompt([
         name: "name"
     },
     {
-        input: "checkbox",
+        type: "checkbox",
         message: "What is your favorite color?",
         choices: ["Red", "Green", "Blue", "Orange", "Yellow", "Black", "Pink", "Purple"],
         name: "colors"
@@ -20,7 +20,8 @@ inquirer.prompt([
         axios.get("https://api.github.com/users/" + info.name)
             .then(function (response) {
                 console.log(response.data);
-
+                
+                let color = info.colors
                 let name = response.data.name
                 let image = response.data.avatar_url
                 let bio = response.data.bio
