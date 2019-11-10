@@ -27,10 +27,13 @@ inquirer.prompt([
                 let comp = response.data.company
                 let repo = response.data.repos_url
                 let pubRepo = response.data.public_repos
+                let follow = response.data.followers
+                let userFollow = response.data.following
+                let locate = response.data.location
 
 
 
-                fs.writeFile("user.md", "# " + name + "\n" + "![userImage](" + image + ")" + "\n" + "### Bio: " + bio + "\n" + "### Company: " + comp + "\n" + "### Repo URL: " + repo + "\n" + "### Public Repos: " + pubRepo, function (err) {
+                fs.writeFile("user.md", "# " + name + "\n" + "![userImage](" + image + ")" + "\n" + "### Bio: " + bio + "\n" + "### Company: " + comp + "\n" + "### Repo URL: " + repo + "\n" + "### Public Repos: " + pubRepo + "\n" + "### Followers: " + follow + "\n" + "### Following: " + userFollow + "\n" + "### Location: " + locate, function (err) {
                     if (err) {
                         return (console.log(err));
                     }
